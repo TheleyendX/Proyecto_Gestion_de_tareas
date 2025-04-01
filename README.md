@@ -1,2 +1,2 @@
-# Proyecto_Gestion_de_tareas
+# Proyecto Gestion de tareas
  
