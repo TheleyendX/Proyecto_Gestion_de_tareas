@@ -1,0 +1,21 @@
+{
+  "name": "proyecto_gestion_de_tareas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheleyendX/Proyecto_Gestion_de_tareas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TheleyendX/Proyecto_Gestion_de_tareas/issues"
+  },
+  "homepage": "https://github.com/TheleyendX/Proyecto_Gestion_de_tareas#readme"
+}
