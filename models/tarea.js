@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Tarea extends Model {
     /**
@@ -13,18 +11,42 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Tarea.init({
-    id_tarea: DataTypes.INTEGER,
-    titulo: DataTypes.STRING,
-    descripcion: DataTypes.TEXT,
-    fecha: DataTypes.DATE,
-    estado: DataTypes.ENUM,
-    categoria: DataTypes.ENUM,
-    id_lista: DataTypes.INTEGER,
-    id_usuario: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Tarea',
-  });
+  Tarea.init(
+    {
+      titulo: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }, 
+      descripcion: {
+        type: DataTypes.TEXT,
+        allowNull: false
+      },
+      fecha: {
+        type: DataTypes.DATE,
+        allowNull: false
+      },
+      estado: {
+        type: DataTypes.ENUM('Pendiente', 'En progreso', 'Completada'),
+        allowNull: false,
+        defaultValue: 'Pendiente'
+      },
+      categoria: {
+        type: DataTypes.ENUM('Escuela', 'Hogar', 'Trabajo', 'Hobby'),
+        allowNull: false
+      },
+      id_lista: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      id_usuario: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+    },
+    {
+      sequelize,
+      modelName: "Tarea",
+    }
+  );
   return Tarea;
 };

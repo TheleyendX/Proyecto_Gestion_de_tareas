@@ -10,4 +10,4 @@ const sequelize = new Sequelize(
         dialect: variables.env.DB_DIALECT,
     }
 );
-export default config;
+export default sequelize;

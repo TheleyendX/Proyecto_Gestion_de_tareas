@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Tareas', {
+    await queryInterface.createTable('Recordatorios', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,26 +12,11 @@ module.exports = {
       id_tarea: {
         type: Sequelize.INTEGER
       },
-      titulo: {
-        type: Sequelize.STRING
-      },
-      descripcion: {
-        type: Sequelize.TEXT
-      },
-      fecha: {
+      fecha_hora: {
         type: Sequelize.DATE
       },
-      estado: {
-        type: Sequelize.ENUM
-      },
-      categoria: {
-        type: Sequelize.ENUM
-      },
-      id_lista: {
-        type: Sequelize.INTEGER
-      },
-      id_usuario: {
-        type: Sequelize.INTEGER
+      mensaje: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Tareas');
+    await queryInterface.dropTable('Recordatorios');
   }
 };
