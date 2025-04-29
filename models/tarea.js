@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       //Relacion uno a uno de tarea con lista
       Tarea.hasOne(models.Lista, { foreignKey: 'id_usuario'});
       models.Lista.belongsTo(Tarea, {foreignKey: 'id_usuario'});
+      kjdhaksdjhakdj;
 
     }
   }
