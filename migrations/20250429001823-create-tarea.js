@@ -7,36 +7,36 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       titulo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       descripcion: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       fecha: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       estado: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
       },
       categoria: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM,
       },
       id_lista: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       id_usuario: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       }
     });
   },
