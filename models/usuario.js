@@ -11,7 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       //Definir relaciones de usuario
-      
+      //Relacion uno a muchos de usuario a tarea
+      Usuario.hasMany(models.Tarea, { foreignKey: 'id_usuario'});
+      //Relacion uno a muchos de usuario a lista
+      Usuario.hasMany(models.Lista, { foreignKey: 'id_usuario'});
+      //Relación uno a uno de usuario a calendario
+      Usuario.hasOne(models.Calendario, { foreignKey: 'id_usuario'});
+      //Relación muchos a uno de usuario a reconocimiento
+      Usuario.hasMany(models.Reconocimiento, { foreignKey: 'id_usuario'});
     }
   }
   Usuario.init({

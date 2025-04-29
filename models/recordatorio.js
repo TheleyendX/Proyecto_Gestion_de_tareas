@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      //Definir relaciones de recordatorio
+      //Relacion tarea - recordatorio uno a uno
+      Recordatorio.belongsTo(models.Tarea, {foreignKey: 'id_usuario'});
     }
   }
   Recordatorio.init({
