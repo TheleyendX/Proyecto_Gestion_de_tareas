@@ -1,7 +1,7 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Tareas', {
       id: {
         allowNull: false,
@@ -10,25 +10,41 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       titulo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       descripcion: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       fecha: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
       estado: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM('Pendiente', 'En progreso', 'Completada'), 
+        allowNull: false,
+        defaultValue: 'Pendiente'
       },
       categoria: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM('Escuela', 'Hogar', 'Trabajo', 'Hobby'), 
+        allowNull: false
       },
       id_lista: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Lista',
+          key: 'id',
+        },
       },
       id_usuario: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Usuario',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -40,7 +56,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Tareas');
   }
 };

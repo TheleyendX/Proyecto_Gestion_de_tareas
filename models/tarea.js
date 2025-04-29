@@ -20,13 +20,35 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Tarea.init({
-    titulo: DataTypes.STRING,
-    descripcion: DataTypes.TEXT,
-    fecha: DataTypes.DATE,
-    estado: DataTypes.ENUM,
-    categoria: DataTypes.ENUM,
-    id_lista: DataTypes.INTEGER,
-    id_usuario: DataTypes.INTEGER
+    titulo: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    descripcion: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    fecha: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    estado: {
+      type: DataTypes.ENUM('Pendiente', 'En progreso', 'Completada'),
+      allowNull: false,
+      defaultValue: 'Pendiente'
+    },
+    categoria: {
+      type: DataTypes.ENUM('Escuela', 'Hogar', 'Trabajo', 'Hobby'),
+      allowNull: false
+    },
+    id_lista: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    id_usuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
   }, {
     sequelize,
     modelName: 'Tarea',

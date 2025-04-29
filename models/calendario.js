@@ -17,8 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Calendario.init({
-    tipo_vista: DataTypes.ENUM,
-    id_usuario: DataTypes.INTEGER
+    tipo_vista: {
+      type: DataTypes.ENUM('dia', 'semana', 'mes'),
+      allowNull: false,
+    },
+    id_usuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Calendario',
