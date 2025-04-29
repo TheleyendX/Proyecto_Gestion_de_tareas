@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #15d3c3;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+input, textarea, select, button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: rgb(228, 197, 26);
+}
