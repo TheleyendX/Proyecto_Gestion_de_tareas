@@ -8,7 +8,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      //Definir las relaciones de tarea
+      //Relacion uno a uno de tarea con lista
+      Tarea.hasOne(models.Lista, { foreignKey: 'id_usuario'});
+      models.Lista.belongsTo(Tarea, {foreignKey: 'id_usuario'});
+      //Relacion uno a uno de tarea a recordatorio
+      Tarea.hasOne(models.Recordatorio, {foreignKey: 'id_usuario'});
+      models.Recordatorio.belongsTo(Tarea, {foreignKey: 'id_usuario'});
+
     }
   }
   Tarea.init(
