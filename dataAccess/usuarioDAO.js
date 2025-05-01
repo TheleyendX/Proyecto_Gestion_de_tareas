@@ -2,51 +2,59 @@ const { Usuario }  = require('../models');
 
 class UsuarioDAO {
     constructor(){}
-    //Con script sql y stored procedures
-    static async crearUsuario2(nombre, correo, contraseña){
+
+    //Con sequelize
+    async crearUsuario(nombre, correo, contrasena) {
         try {
-            const [result] = await sequelize.query('Call SP_CrearUsuario(?, ?, ?)', {replacements: [nombre, correo, contraseña]});
-            return result;
+            const usuario = await Usuario.create({nombre, correo, contrasena});
+            return usuario;
         } catch (error) {
-            console.error('Error al crear usuario', error);
-            throw error;
+            console.error("Error al registrar un Usuario", error);
+        }    
+    }
+    //Con sequelize
+    async eliminarUsuario(){
+        try {
+            const usuario = await sequelize.findByPK(id);
+            if (!usuario) {
+                throw new Error('El usuario no fue encontrado');
+            }
+            await usuario.destroy();
+            return 'Usuario eliminado con éxito';
+        } catch (error) {
+            throw error('Error al eliminar usuario', error);
         }        
     }
     //Con sequelize
-    async crearUsuario(name, email, password) {
+    async actualizarUsuario(id, name, email, password){
         try {
-            const usuario = await Usuario.create({name, email, password});
+            await Usuario.update({name, email, password}, {where: {id}});
+            const usuarioActualizado = await Usuario.findByPK(id);
+            return usuarioActualizado;
+        } catch (error) {
+            console.error('Error al actualizar el usuario', error);
+        }
+    }
+    //Con sequelize
+    async obtenerUsuarios(){
+        try {
+            const usuarios = await Usuario.findAll();
+            return usuarios;
+        } catch (error) {
+            console.log('Error al consultar todos los usuarios', error);
+        }
+    }
+    //Con sequelize
+    async obtenerUsuarioPorID(id){
+        try {
+            const usuario = await Usuario.findByPK(id);
+            if (!usuario) {
+                throw new Error('Usuario no encontrado');
+            }
             return usuario;
         } catch (error) {
-            console.error("Error al registrar un Usuario");
-        }    
-    }
-
-    static async eliminarUsuario(){
-        try {
-            const [result] = await sequelize.query('Call SP_EliminarUsuario');
-            return result;
-        } catch (error) {
-            console.error('Error al crear usuario', error);
-            throw error;
-        }
-    }
-    static async actualizarUsuario(id,nombre, correo, contraseña){
-        try {
-            const [result] = await sequelize.query('Call SP_ModificarUsuario(?,?,?,?)', {replacements: [id, correo, contraseña]});
-            return result;
-        } catch (error) {
-            console.error('Error al crear usuario', error);
-            throw error;
-        }
-    }
-    static async consultarUsuario(){
-        try {
-            const [result] = await sequelize.query('Call SP_ConsultarUsuario');
-            return result;
-        } catch (error) {
-            console.error('Error al crear usuario', error);
-            throw error;
+            console.log('Error al buscar el usuario', error);
         }
     }
 }
+module.exports = new UsuarioDAO();

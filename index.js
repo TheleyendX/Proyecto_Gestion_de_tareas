@@ -3,12 +3,20 @@ const { sequelize } = require('./models');
 
 //Funcion asincrona para ejecutar las operaciones
  async function ejecutarTransación() {
-    //Realiza la sincronización de los modelos con la BD
-    await sequelize.sync();
-    
+   try {
+      //Realiza la sincronización de los modelos con la BD
+      await sequelize.sync();
       
-    //Cierra la conexion a la BD cuando termine todas las operaciones
-    await sequelize.close();
+      const usuario = await UsuarioDAO.crearUsuario('Pepito', 'pepito@gmail.com', 'pepito1123');
+      console.log('El usuario es: ', usuario.toJSON());
+      
+   } catch (error) {
+      console.error('Error en las operaciones', error);
+   } finally{
+      //Cierra la conexion a la BD cuando termine todas las operaciones
+      await sequelize.close(); 
+   }
+
  }
 
  //Realiza las operaciones
