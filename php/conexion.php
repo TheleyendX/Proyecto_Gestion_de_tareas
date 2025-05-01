@@ -5,17 +5,17 @@ $usuario = "root"; // usuario de la base de datos
 $contraseña = "R00t!@2025#DbSecure"; // contraseña de la base de datos
 $base_de_datos = "gestiontareas"; // nombre de la base de datos
 
-// Creamos la conexión a la base de datos utilizando la función mysqli_conexionect
+// Creamos la conexión a la base de datos utilizando la función correcta
 $conexion = mysqli_connect($servidor, $usuario, $contraseña, $base_de_datos);
 
 // Verificamos si la conexión fue exitosa
 if (!$conexion) {
     die("Conexión fallida: " . mysqli_connect_error()); // Si la conexión falla, se muestra un mensaje de error y se termina la ejecución del script
-}else{
-estado_bd = 'todo bien';
-
+} else {
+    $estado_bd = 'todo bien';
+    echo $estado_bd; // Se imprime el estado para comprobarlo
 }
 
-// Cerramos la conexión a la base de datos utilizando la función mysqli_close
-//mysqli_close($conexion);
+// Cerramos la conexión a la base de datos
+mysqli_close($conexion);
 ?>
