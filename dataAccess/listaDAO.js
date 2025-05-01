@@ -15,7 +15,7 @@ class listaDAO {
     //Función que elimina una lista
     async eliminarLista(id){
         try {
-            const lista = await Lista.findByPK(id);
+            const lista = await Lista.findByPk(id);
             if (!lista) {
                 throw new Error('Lista no encontrada');
             }
@@ -29,7 +29,7 @@ class listaDAO {
     async actualizarLista(id, nombre, descripcion){
         try {
             await Lista.update({nombre, descripcion},{where: {id}});
-            const listaActualizada = await Lista.findByPK(id);
+            const listaActualizada = await Lista.findByPk(id);
             return listaActualizada;
         } catch (error) {
             console.error('Error al crear usuario', error);
@@ -47,7 +47,7 @@ class listaDAO {
     //Función que consulta una lista
     async obtenerListaPorID(id) {
         try {
-            const lista = await Lista.findByPK(id);
+            const lista = await Lista.findByPk(id);
             return lista;
         } catch (error) {
             console.error('Error al consultar una lista', error);

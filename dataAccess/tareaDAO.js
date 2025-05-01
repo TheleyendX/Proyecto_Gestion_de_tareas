@@ -16,7 +16,7 @@ class tareaDAO {
     //Función que elimina una tarea
     async eliminarTarea(id){
         try {
-            const tarea = await Tarea.findByPK(id);
+            const tarea = await Tarea.findByPk(id);
             if (!tarea) {
                 throw new Error('Tarea no encontrada');
             }
@@ -30,7 +30,7 @@ class tareaDAO {
     async actualizarTarea(id, titulo, descripcion, fecha, estado, categoria, id_lista){
         try {
             await Tarea.update({titulo, descripcion, fecha, estado, categoria, id_lista}, {where: {id}});
-            const tareaActualizada = await Tarea.findByPK(id);
+            const tareaActualizada = await Tarea.findByPk(id);
             return tareaActualizada;
         } catch (error) {
             console.error('Error al crear usuario', error);
@@ -48,7 +48,7 @@ class tareaDAO {
     //Función que consulta una sola tarea
     async obtenerTareaPorID(id){
         try {
-            const tarea = await Tarea.findByPK(id);
+            const tarea = await Tarea.findByPk(id);
             return tarea;
         } catch (error) {
             console.error('Error al consultar una tarea', error);
