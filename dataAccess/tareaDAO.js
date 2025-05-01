@@ -55,3 +55,5 @@ class tareaDAO {
         }
     }
 }
+
+module.exports = new tareaDAO();

@@ -26,9 +26,9 @@ class UsuarioDAO {
         }        
     }
     //Con sequelize
-    async actualizarUsuario(id, name, email, password){
+    async actualizarUsuario(id, nombre, correo, contrasena){
         try {
-            await Usuario.update({name, email, password}, {where: {id}});
+            await Usuario.update({nombre, correo, contrasena}, {where: {id}});
             const usuarioActualizado = await Usuario.findByPk(id);
             return usuarioActualizado;
         } catch (error) {
