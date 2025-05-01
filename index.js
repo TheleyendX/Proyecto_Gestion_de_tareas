@@ -6,7 +6,7 @@ const { sequelize } = require('./models');
     //Realiza la sincronización de los modelos con la BD
     await sequelize.sync();
     
-
+      
     //Cierra la conexion a la BD cuando termine todas las operaciones
     await sequelize.close();
  }

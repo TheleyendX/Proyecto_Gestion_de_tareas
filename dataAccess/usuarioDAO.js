@@ -1,5 +1,4 @@
-const { Usuario} = require('../models');
-const sequelize = require('../config/dbConnect');
+const { Usuario }  = require('../models');
 
 class UsuarioDAO {
     constructor(){}
