@@ -41,7 +41,7 @@ class UsuarioDAO {
             const usuarios = await Usuario.findAll();
             return usuarios;
         } catch (error) {
-            console.log('Error al consultar todos los usuarios', error);
+            console.error('Error al consultar todos los usuarios', error);
         }
     }
     //Con sequelize
@@ -53,7 +53,7 @@ class UsuarioDAO {
             }
             return usuario;
         } catch (error) {
-            console.log('Error al buscar el usuario', error);
+            console.error('Error al buscar el usuario', error);
         }
     }
 }

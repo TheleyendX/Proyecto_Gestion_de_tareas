@@ -4,40 +4,54 @@ const { Tarea } = require('../models');
 class tareaDAO {
     constructor(){}
 
-    static async creartarea(titulo, descripcion, fecha, estado, categoria){
+    //Función que crea una tarea
+    async crearTarea(titulo, descripcion, fecha, estado, categoria, id_lista, id_usuario){
         try {
-            const [result] = await sequelize.query('Call SP_CrearTarea(?, ?, ?, ?, ?)', {replacements: [titulo, descripcion, fecha, estado, categoria]});
-            return result;
+            const tarea = await Tarea.create({titulo, descripcion, fecha, estado, categoria, id_lista, id_usuario});
+            return tarea;
         } catch (error) {
             console.error('Error al crear tarea', error);
-            throw error;
         }        
     }
-    static async eliminartarea(){
+    //Función que elimina una tarea
+    async eliminarTarea(id){
         try {
-            const [result] = await sequelize.query('Call SP_EliminarTarea');
-            return result;
+            const tarea = await Tarea.findByPK(id);
+            if (!tarea) {
+                throw new Error('Tarea no encontrada');
+            }
+            await tarea.destroy();
+            return 'Tarea eliminada con éxito';
         } catch (error) {
-            console.error('Error al eliminar tarea', error);
-            throw error;
+            console.error('Error al eliminar una tarea', error);
         }
     }
-    static async actualizarUsuario(id, titulo,descripcion, fecha, estado, categoria){
+    //Función que actualiza una tarea
+    async actualizarTarea(id, titulo, descripcion, fecha, estado, categoria, id_lista){
         try {
-            const [result] = await sequelize.query('Call SP_ModificarTarea(?,?,?,?)', {replacements: [id,titulo, descripcion, fecha, estado, categoria]});
-            return result;
+            await Tarea.update({titulo, descripcion, fecha, estado, categoria, id_lista}, {where: {id}});
+            const tareaActualizada = await Tarea.findByPK(id);
+            return tareaActualizada;
         } catch (error) {
             console.error('Error al crear usuario', error);
-            throw error;
         }
     }
-    static async consultartarea(){
+    //Función que consulta las tareas
+    async consultartarea(){
         try {
-            const [result] = await sequelize.query('Call SP_ConsultarTareas');
-            return result;
+            const tareas = await Tarea.findAll();
+            return tareas;
         } catch (error) {
-            console.error('Error al consultar tarea', error);
-            throw error;
+            console.error('Error al consultar las tareas', error);
+        }
+    }
+    //Función que consulta una sola tarea
+    async obtenerTareaPorID(id){
+        try {
+            const tarea = await Tarea.findByPK(id);
+            return tarea;
+        } catch (error) {
+            console.error('Error al consultar una tarea', error);
         }
     }
 }
