@@ -22,7 +22,7 @@ class listaDAO {
             await lista.destroy();
             return 'lista eliminada con exito';
         } catch (error) {
-            console.error('Error al crear usuario', error);
+            console.error('Error al eliminar la lista', error);
         }
     }
     //Función que actualiza una lista
@@ -32,7 +32,7 @@ class listaDAO {
             const listaActualizada = await Lista.findByPk(id);
             return listaActualizada;
         } catch (error) {
-            console.error('Error al crear usuario', error);
+            console.error('Error al actualizar la lista', error);
         }
     }
     //Función que consulta todas las listas
@@ -41,7 +41,7 @@ class listaDAO {
             const listas = await Lista.findAll();
             return listas;
         } catch (error) {
-            console.error('Error al crear usuario', error);
+            console.error('Error al consultar todas las listas', error);
         }
     }
     //Función que consulta una lista

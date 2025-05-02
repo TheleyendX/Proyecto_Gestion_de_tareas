@@ -3,7 +3,7 @@ const { Usuario }  = require('../models');
 class UsuarioDAO {
     constructor(){}
 
-    //Con sequelize
+    //Función que permite registrar un usuario
     async crearUsuario(nombre, correo, contrasena) {
         try {
             const usuario = await Usuario.create({nombre, correo, contrasena});
@@ -12,7 +12,7 @@ class UsuarioDAO {
             console.error("Error al registrar un Usuario", error);
         }    
     }
-    //Con sequelize
+    //Función que permite eliminar un usuario
     async eliminarUsuario(id){
         try {
             const usuario = await Usuario.findByPk(id);
@@ -25,7 +25,7 @@ class UsuarioDAO {
             console.error('Error al eliminar usuario', error);
         }        
     }
-    //Con sequelize
+    //Función que actualiza a un usuario
     async actualizarUsuario(id, nombre, correo, contrasena){
         try {
             await Usuario.update({nombre, correo, contrasena}, {where: {id}});
@@ -35,7 +35,7 @@ class UsuarioDAO {
             console.error('Error al actualizar el usuario', error);
         }
     }
-    //Con sequelize
+    //Función que consulta todos los usuarios
     async obtenerUsuarios(){
         try {
             const usuarios = await Usuario.findAll();
@@ -44,7 +44,7 @@ class UsuarioDAO {
             console.error('Error al consultar todos los usuarios', error);
         }
     }
-    //Con sequelize
+    //Función que consulta un usuario
     async obtenerUsuarioPorID(id){
         try {
             const usuario = await Usuario.findByPk(id);

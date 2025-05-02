@@ -33,7 +33,7 @@ class tareaDAO {
             const tareaActualizada = await Tarea.findByPk(id);
             return tareaActualizada;
         } catch (error) {
-            console.error('Error al crear usuario', error);
+            console.error('Error al actualizar una tarea', error);
         }
     }
     //Función que consulta las tareas
