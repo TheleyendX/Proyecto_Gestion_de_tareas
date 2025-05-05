@@ -3,47 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Menu</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <header>
-        <h1>Mis Tareas</h1>
-        <nav>
-            <a href="dashboard.html">Tareas</a>
-            <a href="calendario.html">Calendario</a>
-            <a href="perfil.html">Perfil</a>
-            <a href="index.html">Cerrar Sesión</a>
-        </nav>
-    </header>
+  <div class="container">
+    <div class="sidebar">
+        <button onclick="location.href='index.html'">Cerrar sesion</button>
+      <button class="btn">Calendario</button>
+      <button onclick="location.href='crear_tarea.html'">Crear Nueva Tarea</button>
+      <button class="btn">Lista de Tareas</button>
+      <button class="btn">Reconocimiento</button>
+      
+    </div>
 
-    <main>
-        <button onclick="location.href='crear_tarea.html'">Crear Nueva Tarea</button>
+    <div class="main">
+      <h1 class="titulo">Menu</h1>
+      <div class="card">
+        <div class="card-header">Tareas del día</div>
 
-        <section>
-            <h2>Pendientes</h2>
-            <div class="tarea">
-                <h3>Ejemplo de tarea</h3>
-                <p>Descripción de la tarea.</p>
-                <p>Fecha límite: 2025-05-10</p>
-                <button>Editar</button>
-                <button>Eliminar</button>
-            </div>
-        </section>
-
-        <section>
-            <h2>En Proceso</h2>
-            <!-- Tareas en proceso -->
-        </section>
-
-        <section>
-            <h2>Completadas</h2>
-            <!-- Tareas completadas -->
-        </section>
-
-        <div id="mensaje-exito" style="display:none;">
-            ¡Felicidades! Completaste todas tus tareas del día.
-        </div>
-    </main>
+        
+        <div class="card-footer">Siguientes</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
