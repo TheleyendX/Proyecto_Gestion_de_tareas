@@ -1,4 +1,4 @@
-const usuarioDAO = require('../dataAccess/usuarioDAO');//Importamos el DAO de usuario
+const usuarioDAO = require('../DAOS/usuarioDAO');//Importamos el DAO de usuario
 
 class usuarioController{
     constructor(){}
@@ -66,4 +66,4 @@ class usuarioController{
     }
 }
 
-export default new usuarioController();
+module.exports = new usuarioController();
