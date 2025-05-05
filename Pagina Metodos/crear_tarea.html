@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Tarea</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <h1>Crear Nueva Tarea</h1>
+    <form action="dashboard.html" method="post">
+        <input type="text" placeholder="Título de la tarea" required>
+        <textarea placeholder="Descripción de la tarea" required></textarea>
+        <input type="date" required>
+        <select required>
+            <option value="">Seleccionar categoría</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="en_proceso">En Proceso</option>
+            <option value="completada">Completada</option>
+        </select>
+        <button type="submit">Guardar Tarea</button>
+    </form>
+</body>
+</html>
